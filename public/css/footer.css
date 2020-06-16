@@ -1,0 +1,59 @@
+/* footer */
+
+
+
+.main-footer {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid black;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: aliceblue;
+    margin-top: 60px;
+}
+
+.col.foot-section {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: 100;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.foot-social {
+    font-size: 38px !important;
+
+}
+
+
+.secondary-footer {
+    border-top: 1px solid black;
+    background: url('/images/background 2_LI.jpg');
+    background-size: 55px;
+}
+
+.secondary-footer .madeby{
+    max-height: 25px;
+    overflow: hidden;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+
+/* --------- query width 768px --------*/
+
+
+@media only screen and (min-width: 768px) {
+
+/* ------ main footer (min 768px) --------*/
+
+.main-footer {
+    flex-direction: row !important;
+}
+
+.foot-section {
+    padding: 60px 10px;
+}
+
+}

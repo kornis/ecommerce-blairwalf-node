@@ -1,0 +1,60 @@
+<%- include("../partials/header") %>
+<link rel="stylesheet" href='/css/login.css'>
+<script src='/js/validations/validator.min.js'></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://apis.google.com/js/api:client.js"></script>
+<meta name="google-signin-client_id" content="412000884387-d5dmn4o4s5unfjma2jc3fb3b7u80tru1.apps.googleusercontent.com">
+<title>BW Blairwalf | Registro de usuario</title>
+</head>
+<body>
+
+<%- include("../partials/encabezado") %>
+
+    <div class="container">
+        <div class="row register-form">
+            <div class="col-sm-6">
+                <% if(typeof messageError !== 'undefined'){ %>
+                    <div class="messageError">
+                        <span class="closeButton">X</span>
+                        <p><%= messageError %></p>
+                    </div>
+                    <% } %>
+                <h3>Registrarse</h3>
+                <p id="change-form">¿Tenes usuario en Blairwalf? <a href="#">Iniciá sesión acá</a></p>
+                <form method="POST" action="/registrarse?_method=PUT" id="user_form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" placeholder="Ingrese su nombre" data-name="nombre">
+                        <p class="form-error hidden"></p>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="lastName" placeholder="Ingrese su apellido" data-name="apellido">
+                        <p class="form-error hidden"></p>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="email" placeholder="Ingrese su email" data-name="email">
+                        <p class="form-error hidden"></p>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="pass" class="form-control" name="password" placeholder="Contraseña" data-name="contraseña">
+                        <p class="form-error hidden"></p>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="vpass" class="form-control" name="passwordRpt" placeholder="Repetir Contraseña" data-name="contraseña">
+                        <p class="form-error hidden"></p>
+                    </div>
+                    
+                    <button class="btn send-button" type="submit">Registrarse</button>
+                    <p class="empty-form form-error hidden"><small></small></p>
+                </form>
+                <hr>
+                <a href="" class="btn send-button fb-button">Iniciar Sesión con Facebook</a>
+                <div class="btn send-button g-button" id="customBtn">Iniciar Sesión con Google</div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("../partials/footer") %>
+    <script src="/js/login-api/google-login.js"></script>
+    <script>startApp();</script>
+</body>
+</html>

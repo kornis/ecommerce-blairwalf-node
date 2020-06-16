@@ -1,0 +1,180 @@
+<%- include("../partials/header") %>
+
+<link rel="stylesheet" href='/css/cart.css'>
+<link rel="stylesheet" href='/css/tarjeta-producto.css'>
+<title>BW Blairwalf | Carrito de compras</title>
+</head>
+<body>
+<div class="container main-container">
+    <div class="row">
+    <div class="col-md-7 col-lg-8">
+    <div class="row mb-4">
+        
+        
+        <div class="col section-title align-self-center">
+            <h5>CARRITO DE COMPRAS</h5>
+        </div>
+        
+    </div>
+
+    <div class="row mb-4 justify-content-center">
+        <div class="col-4 col-sm-4">
+            <div id="cart-image-item">
+                <img src="https://via.placeholder.com/100x130" alt="">
+            </div>
+        </div>
+        
+        <div class="col-8 col-sm-8">
+            <div class="row mb-5" id="cart-item-info">
+                <div class="col">
+                    <a href="#" id="cart-item-title">Corpiño celeste</a>
+                    <p id="cart-item-size">Talle 95</p>
+                </div>
+                <div class="col push-right" id="cart-trash-icon">
+                    <i class="far fa-trash-alt item-cart"></i>
+                </div>
+            </div>
+            <div class="row">    
+                <div class="col" id="cart-qty-price">
+                    <i class="fas fa-minus item-cart" id="cart-qty-input"></i>
+                    <span id="cant">3</span>
+                    <i class="fas fa-plus item-cart"></i>
+                </div>
+                <div class="col push-right">
+                    <span id="cart-item-price"><strong>$600,00</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row-fluid" id="cart-no-stock">
+        <div class="col">
+            <p>No tenemos más stock de este producto para agregarlo al carrito.
+             Si querés podes <a href="#">ver otros acá</a></p>
+        </div>
+    </div>
+    <hr>
+    
+    <div class="row mb-4 justify-content-center">
+        <div class="col-4 col-sm-4">
+            <div id="cart-image-item">
+                <img src="https://via.placeholder.com/100x130" alt="">
+            </div>
+        </div>
+        
+        <div class="col-8 col-sm-8">
+            <div class="row mb-5" id="cart-item-info">
+                <div class="col">
+                    <a href="#" id="cart-item-title">Corpiño celeste</a>
+                    <p id="cart-item-size">Talle 95</p>
+                </div>
+                <div class="col push-right" id="cart-trash-icon">
+                    <i class="far fa-trash-alt item-cart"></i>
+                </div>
+            </div>
+            <div class="row">    
+                <div class="col" id="cart-qty-price">
+                    <i class="fas fa-minus item-cart" id="cart-qty-input"></i>
+                    <span id="cant">3</span>
+                    <i class="fas fa-plus item-cart"></i>
+                </div>
+                <div class="col push-right">
+                    <span id="cart-item-price"><strong>$600,00</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row-fluid" id="cart-no-stock">
+        <div class="col">
+            <p>No tenemos más stock de este producto para agregarlo al carrito.
+             Si querés podes <a href="#">ver otros acá</a></p>
+        </div>
+    </div>
+    <hr>
+</div>
+
+    <div class="col-md-5 col-lg-4">
+    <div class="row-fluid">
+        <div class="col" id="cart-total-purchase">
+           <div class="row">
+                <div class="col">
+                    <span id="subtotal-cart"><strong>Subtotal</strong> <small>(sin envío)</small></span>
+                </div>
+                <div class="col push-right">    
+                    <span id="subtotal-price-cart" class="push-right"><strong>$600,00</strong></span>
+                </div>
+            </div>
+            <div class="row push-bottom">
+                <div class="col" id="cart-total">
+                    <span id="total-cart"><strong>Total</strong></span>
+                </div>
+                <div class="push-right">
+                    <span id="total-price-cart"><strong>$600,00</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <a href="#">
+                <div id="checkout">
+                    TERMINAR COMPRA
+                </div>
+            </a>
+        </div>
+
+        <div class="col-12">
+            <div id="cart-more-products">
+                <a href="#">Ver más productos</a>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+
+<div class="container">
+<div class="row">
+    <div class="col">
+        <h5>También te puede interesar...</h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col tarjeta">
+        <div class="tarjeta-item">
+            <img src="https://via.placeholder.com/250x320" alt="">
+            <div class="tarjeta-item-bottom">
+                <h3>Titulo1</h3>
+                <p>descripcion</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col tarjeta">
+        <div class="tarjeta-item">
+            <img src="https://via.placeholder.com/250x320" alt="">
+            <div class="tarjeta-item-bottom">
+                <h3>Titulo1</h3>
+                <p>descripcion</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col tarjeta">
+        <div class="tarjeta-item">
+            <img src="https://via.placeholder.com/250x320" alt="">
+            <div class="tarjeta-item-bottom">
+                <h3>Titulo1</h3>
+                <p>descripcion</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<%- include("../partials/footer") %>
+</body>
+</html>
+

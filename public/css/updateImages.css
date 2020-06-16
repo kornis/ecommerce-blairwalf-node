@@ -1,0 +1,47 @@
+#lbox {
+    background-color: rgba(0,0,0,0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#upload-panel {
+    position: relative;
+    padding: 25px;
+    background-color: #f58eb4 !important;
+}
+
+
+#close-panel {
+    position: absolute;
+    color: white !important;
+    right: 22px;
+    top: 12px;
+    cursor: pointer;
+}
+
+#close-panel:hover {
+    color: #01aaaa !important;
+}
+
+#upload-panel img {
+    display: block;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#upload-panel label {
+    font-size: 12px;
+    color: white !important;
+}
+
+#updateImage {
+    color: white !important;
+}

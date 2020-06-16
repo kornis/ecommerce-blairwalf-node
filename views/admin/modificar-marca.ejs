@@ -1,0 +1,55 @@
+<%- include('../partials/header') %>
+
+<link rel="stylesheet" href="{{asset('/css/admin-side-column.css')}}">
+<link rel="stylesheet" href="{{asset('/css/footer.css')}}">
+<title>BW Blairwalf | Modificar marca</title>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+@section('main-section')
+
+        @include('/partials/side-column')
+
+        <div class="col-sm-8 col-md-9">
+            <p class="centrar">MODIFICAR MARCA</p>
+
+            @if(session('message'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{session('message')}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+            @endif
+            @if(session('message-error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{session('message-error')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            @endif
+
+            <form action="/admin/modificar-marca" method="post" class="form">
+                @csrf
+                <div class="form-group">
+                    <label for="brand_name">Título</label>
+                <input type="text" name="brand_name" id="brand_name" class="form-control" data-name="título" value="{{$marca->brand_name}}">
+                    <p class="required"></p>
+                </div>
+                <div class="flex"><button type="submit" class="btn send-button">Modificar marca</button></div>
+            </form>
+        </div>
+
+      </div>
+      <div>
+    
+    
+   
+<%- include('..partials/footer') %>
+
+
+<script src="/js/alerts.js"></script>
+      </body>
+      </html>

@@ -1,0 +1,54 @@
+<%- include('../partials/header') %>
+<link rel="stylesheet" href='/css/admin-side-column.css'>
+<link rel="stylesheet" href='/css/footer.css'>
+
+<title>BW Blairwalf | Modificar talle</title>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+
+      <%- include('../partials/side-column') %>
+
+        <div class="col-sm-8 col-md-9">
+            <p class="centrar">MODIFICAR TALLE</p>
+
+            @if(session('message'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{session('message')}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+            @endif
+            @if(session('message-error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{session('message-error')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            @endif
+
+            <form action="/admin/modificar-talle" method="post" class="form">
+                @csrf
+                <div class="form-group">
+                    <label for="size_name">Nombre</label>
+                <input type="text" name="size_name" id="size_name" class="form-control" data-name="título" value="{{$talle->size_name}}">
+                    <p class="required"></p>
+                </div>
+                <div class="flex"><button type="submit" class="btn send-button">Modificar talle</button></div>
+            </form>
+        </div>
+
+      </div>
+  </div>
+    
+    
+   
+<%- include('../partials/footer') %>
+
+
+<script src="/js/alerts.js"></script>
+</body>
+</html>

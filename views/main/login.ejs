@@ -1,0 +1,59 @@
+<%- include("../partials/header") %>
+
+
+
+<link rel="stylesheet" href='/css/login.css'>
+<title>BW Blairwalf | Iniciar Sesión</title>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://apis.google.com/js/api:client.js"></script>
+
+<meta name="google-signin-client_id" content="412000884387-d5dmn4o4s5unfjma2jc3fb3b7u80tru1.apps.googleusercontent.com">
+</header>
+<body>
+
+<%- include("../partials/encabezado") %>
+
+    <div class="container">
+        <div class="row register-form">
+            <div class="col-sm-11 col-md-9 col-lg-6 col-xl-5">
+                <% if(typeof messageError !== 'undefined'){ %>
+                <div class="messageError">
+                    <span class="closeButton">X</span>
+                    <p>Mensaje de error</p>
+                </div>
+                <% } %>
+                
+                <h3>Iniciar Sesión</h3>
+                <p class="text-form">¿Nuevo/a en Blairwalf? <a href="/registrarse">Registrate gratis</a> </p>
+                <form method="POST" action="/login">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="user_email" placeholder="Ingrese su email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="user_password" placeholder="Contraseña">
+                    </div>
+                    <div class="form-row" id="recordar">
+                        <div class="col">
+                            <input type="checkbox" name="remember" id="remember">
+                            <label for="remember" class="text-form">Recordarme</label>
+                        </div>
+                        <div class="col">
+                            <a href="/recuperar-password" class="text-form">¿Olvidaste tu contraseña?</a>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn send-button">Iniciar Sesión</button>
+                </form>
+                <hr>
+                <a href="" class="btn send-button fb-button">Iniciar Sesión con Facebook</a>
+                <div class="btn send-button g-button" id="customBtn">Iniciar Sesión con Google</div>
+
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/footer') %>
+    <script src="/js/login-api/google-login.js"></script>
+    <script>startApp();</script>
+
+</body>
+</html>

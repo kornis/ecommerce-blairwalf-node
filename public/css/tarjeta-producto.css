@@ -1,0 +1,126 @@
+.col.tarjeta {
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    padding: 6px 0;
+    cursor: pointer;
+    align-items: center;
+    max-width: 300px;
+}
+
+.col.tarjeta:hover {
+    -webkit-box-shadow: 0px 10px 20px -19px rgba(0,0,0,0.76);
+    -moz-box-shadow: 0px 10px 20px -19px rgba(0,0,0,0.76);
+    box-shadow: 0px 10px 20px -19px rgba(0,0,0,0.76);
+}
+
+.zoom 
+{
+    transition: transform ease-in-out 0.2s;
+}
+
+.zoom:hover
+{
+    transform: scale(1.05);
+}
+
+
+.tarjeta-item-bottom {
+    background-color: aliceblue; 
+    text-align: center;
+    padding: 0;
+    height: 0;
+    transition: all 0.3s ease-in-out ;
+    overflow: hidden;
+}
+
+.tarjeta-item-bottom p,
+.tarjeta-item-bottom h3 {
+    color:white !important;
+}
+
+.tarjeta-item:hover .tarjeta-item-bottom {
+    height: 80px;
+    padding:3px 5px;
+}
+
+.tarjeta-bottom-modif {
+    padding: 10px 5px;
+}
+
+.tarjeta-bottom-modif span:hover {
+    color: rgb(247, 138, 199);
+    font-weight: bold;
+}
+
+.boton-slider {
+    cursor: pointer;
+}
+
+.tarjeta-item img {
+    height: 300px;
+}
+
+.show-tarjeta {
+    display: block;
+}
+
+.hide-tarjeta {
+    display: none;
+}
+
+.fade2 {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+  
+  @keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+
+  #color {
+    border: 1px solid transparent;
+    width: 200px;
+    padding: 10px 8px;
+    background: aliceblue;
+    text-align: center;
+}
+
+.icon-select {
+    position: relative;
+    cursor: pointer;
+}
+
+.icon-select select {
+    cursor: pointer;
+}
+
+.icon-select i {
+    position: absolute;
+    right: 14px;
+    top: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}
+  
+  .item-talle {
+    border: 2px pink solid;
+    padding: 3px 6px;
+    margin: 10px 5px;
+    cursor: pointer;
+}
+
+.btn.add-cart-btn {
+    background: aliceblue;
+    margin: 10px;
+    width: 80%;
+    max-width: 500px;
+}

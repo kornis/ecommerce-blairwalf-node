@@ -1,0 +1,248 @@
+/* main-header */
+.login-menu {
+    background: white;
+}
+
+.data-header, .data-header a {
+    background-color: aliceblue;
+    font-weight: 100;
+}
+
+.col.page-info {
+    flex-basis: auto;
+    font-size: 12px;
+}
+
+.col.login, .col.social {
+    display: none;
+    flex-basis: min-content !important;
+    justify-content: space-around;
+    font-size: 14px;
+    align-items: center;
+}
+
+.col.social {
+    font-size: 18px;
+}
+
+.logo img {
+    width: 250px;
+}
+
+.row.logo-search .col {
+    justify-content: center;
+    display: flex;
+}
+
+#main-search {
+    border-color: rgba(200,200,200,0.4);
+    padding: 5px 5px 5px 40px;
+    border-radius: 5px;
+    width: inherit;
+    height: 64%;
+}
+
+.search-icon {
+    position: absolute;
+    left: 53px;
+    padding-right: 8px;
+    border-radius: 3px 0 0 3px;
+    padding-left: 8px;
+    color: gray;
+    background-color:aliceblue;
+    border-right: 1px solid;
+}
+
+.menu-search {
+    background: url('/images/background\ 2_LI.jpg');
+    background-size: 90px;
+}
+
+.login-menu a {
+    margin: 0 5px;
+}
+
+.login-menu span:hover {
+    color: aliceblue !important;
+}
+
+.login-menu i
+{
+    padding: 0 2px;
+}
+
+.col.menu {
+    padding:0 !important;
+}
+
+.col.menu-icon {
+    text-align: end;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.col.menu-icon i:hover{  
+    cursor: pointer;
+}
+
+.col.menu a {
+    padding:10px 10px;
+}
+
+.col.menu a:last-child {
+    padding-bottom: 10px;
+}
+
+.col.menu a:hover {
+    border-bottom: 2px solid black;
+}
+
+
+.session-link {
+    display: flex;
+    flex-direction: column;
+    background-color: gray;
+    
+}
+
+.session-link a {
+    color: white;
+}
+
+.hambr {
+    padding: 10px 15px 10px 0;
+    font-size: 25px;
+}
+
+.col.menu {
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+    overflow: hidden;
+    background-color: aliceblue;
+    font-weight: 100;
+    
+}
+
+.section-title {
+    background-color: aliceblue;
+    padding: 6px;
+}
+
+
+
+
+.first-menu {
+    padding: 0 !important;
+    text-align: center;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    background-color: aliceblue;
+    border-bottom: 1px solid grey;
+}
+
+.first-menu:hover {
+    cursor: pointer;
+    color:gray;
+    border-bottom: 3px solid grey;
+}
+
+.menu-expanded {
+    display: none !important;
+}
+
+
+
+
+
+/* --------- query width 768px --------*/
+
+
+@media only screen and (min-width: 768px) {
+
+    .col.login, .col.social {
+        display: flex;
+    }
+
+
+ 
+
+    .mobile-menu {
+        display: none;
+    }
+
+    .mobile-first-menu {
+        display: none;
+    }
+
+    .hambr {
+        display: none;
+    }
+
+    #main-search {
+        width: 95%;
+        height: 28px;
+        border-radius: 0%;
+        border: none;
+        background-color: #f0f8ff;
+        padding-left: 35px;
+        margin-top: 5px;
+        font-size: 12px;
+    }
+
+    .search-icon {
+        height: 28px;
+        font-size: 14px;
+        left: 15px;
+        top:5px;
+    }
+
+    .row.logo-search .col {
+        justify-content: space-between !important;
+    }
+
+
+
+.row.row-space.logo-search {
+    align-items: center;
+}
+
+.row.logo-search .col {
+    justify-content: right !important;
+}
+
+.col.col-md-3.logo-col {
+    justify-content: center !important;
+}
+
+.menu-expanded {
+    display: flex !important;
+}
+
+.menu-expanded-ul {
+    font-size: 12px;
+    display: flex;
+    padding: 0;
+}
+
+
+.menu-expanded-li {
+    list-style: none;
+    padding: 5px 10px;
+}
+
+.menu-expanded-li:hover {
+    cursor: pointer;
+    color:aliceblue !important;
+}
+
+.divider-menu {
+    margin-right: 20px;
+}
+
+}

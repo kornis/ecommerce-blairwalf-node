@@ -1,0 +1,121 @@
+
+
+/* ---------------- */
+
+/* carrousel */
+
+.first-carrousel
+{
+    display: none;
+}
+
+/* ---------------------- */
+
+/* card styles */
+
+.main-section {
+    /*background-color: bisque;*/
+    width: 280px;
+}
+
+.row.row-space.productos-destacados {
+    flex-direction: column;
+}
+
+.col.tarjeta {
+    justify-content: center;
+    display: flex;
+    padding: 6px 0;
+    cursor: pointer;
+    align-items: baseline;
+}
+
+.tarjeta-item {
+    -webkit-box-shadow: 0px 10px 30px -19px rgba(0,0,0,0.76);
+    -moz-box-shadow: 0px 10px 30px -19px rgba(0,0,0,0.76);
+    box-shadow: 0px 10px 30px -19px rgba(0,0,0,0.76);
+}
+
+.tarjeta-item-bottom {
+    background-color: aliceblue;
+    text-align: center;
+    padding: 0;
+    height: 0;
+    transition: all 0.3s ease-in-out ;
+    overflow: hidden;
+}
+
+.tarjeta-item:hover .tarjeta-item-bottom {
+    height: 80px;
+    padding:3px 5px;
+}
+
+
+
+/*--------------------*/
+
+
+
+
+
+/* ----- media queries ------*/
+
+
+@media only screen and (min-width: 600px) {
+
+
+    /* ------ main section (min 768px) --------*/
+
+.main-section {
+    width: auto !important;
+}
+
+.main-section .row {
+    flex-direction: row !important;
+}
+
+
+}
+
+/* --------- query width 768px --------*/
+
+
+@media only screen and (min-width: 768px) {
+
+
+
+.first-carrousel {
+    display: inline-block;
+}
+
+.mySlide {
+    display: none;
+}
+
+.mySlide img {
+    width: 100vw;
+}
+
+.first-carrousel>.row>.col {
+    padding: 0 !important;
+}
+
+.flecha{
+    position: absolute;
+    top: 40%;
+    font-size: 50px;
+    margin: 0 10px;
+    color: rgba(0,0,0,0.6);
+}
+
+.fa-chevron-left,
+.fa-chevron-right:hover {
+    cursor: pointer;
+}
+
+.flecha.derecha {
+    right: 0;
+}
+
+
+}

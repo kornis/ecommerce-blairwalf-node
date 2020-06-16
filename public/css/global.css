@@ -1,0 +1,118 @@
+/* estilos globales */
+* {
+    font-family: 'Roboto', sans-serif;
+    color:#f58eb4 !important;
+}
+
+:root {
+    --main-color: #f58eb4;
+    --required-color: #DE404F;
+    --facebook-color: #1873EB;
+    --google-color: #E34133;
+}
+
+a {
+    text-decoration: none !important;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.row-space {
+    padding: 4px 0 10px 0;
+}
+
+.item {
+    padding: 5px;
+}
+
+.p-nomargin {
+    margin-bottom: 0 !important;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.centrar {
+    text-align: center;
+}
+
+
+.push-right {
+    text-align: right;
+}
+
+.push-bottom {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+.section-title {
+    padding: 12px 0;
+    text-align: center;
+    background-color: #F0F8FF;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.icon-select {
+    position: relative;
+    cursor: pointer;
+}
+
+.icon-select select {
+    cursor: pointer;
+}
+
+.icon-select i {
+    position: absolute;
+    right: 14px;
+    top: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btn.send-button {
+    width: 100%;
+    background: var(--main-color);
+    color: white !important;
+}
+
+.required {
+    font-size: 10px;
+    color: var(--required-color) !important;
+}
+
+.hidden {
+    display: none;
+}
+
+.messageError {
+    position: relative;
+    background-color: tomato;
+    padding: 8px 15px;
+    z-index: 100;
+    border-radius: 7px;
+}
+
+.closeButton {
+    position: absolute;
+    top:4px;
+    right: 15px;
+    color: white !important;
+    font-size: 14px;
+}
+
+.messageError p {
+    color: white !important;
+}
