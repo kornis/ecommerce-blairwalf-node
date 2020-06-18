@@ -1,16 +1,66 @@
 const DB = require('../database/models');
+const bcrypt = require('bcrypt');
 const {users, GoogleUser} = DB;
 
 module.exports = {
     login: (req,res) =>
     {
+
+        let numero = 118.10
+
+console.log(numero)
+
+let nuevoNuv = numero.toLocaleString('es-ar', {
+    minimumFractionDigits: 2
+})
+
+console.log(nuevoNuv)
+
+let segundoNum = numero.toLocaleString( undefined, {minimumFractionDigits: 2})
+
+console.log(segundoNum)
+
+return res.send({nuevoNuv,segundoNum})
+
+
+
+
+
         return res.render('main/login');
     },
 
     loginPost: (req,res) =>
     {
-        req.session.user = req.body.user_email;
-        return res.send(req.session.user);
+        let email = req.body.email;
+        let password = req.body.password;
+        users.findOne({
+            where:{
+                email:email,
+            }
+        })
+        .then(result =>
+            {
+                if(result)
+                {
+                    if(bcrypt.compareSync(password,result.password))
+                    {
+                        req.session.user = req.body.user_email;
+                        return res.send("Iniciaste sesión");
+                    }
+                    else
+                    {
+                        return res.render('main/login', {messageError:"Usuario y/o contraseña inválido/a."});
+                    }
+                }
+                else
+                {
+                    return res.render('main/login', {messageError:"Usuario y/o contraseña inválido/a."});
+                }
+            })
+            .catch(error =>
+                {
+                    console.log(error);
+                })
     },
 
     googleLogin: (req,res) =>
@@ -118,6 +168,7 @@ verify().catch(console.error);
             if(req.body.password === req.body.passwordRpt)
             {
                 delete req.body.passwordRpt;
+                req.body.password = bcrypt.hashSync(req.body.password,12);
                 users.create(
                     {
                         ...req.body

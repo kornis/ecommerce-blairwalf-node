@@ -1,9 +1,9 @@
 <%- include("../partials/header") %>
 
 
-
 <link rel="stylesheet" href='/css/login.css'>
 <title>BW Blairwalf | Iniciar Sesión</title>
+<script src='/js/validations/validator.min.js'></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="https://apis.google.com/js/api:client.js"></script>
 
@@ -25,12 +25,14 @@
                 
                 <h3>Iniciar Sesión</h3>
                 <p class="text-form">¿Nuevo/a en Blairwalf? <a href="/registrarse">Registrate gratis</a> </p>
-                <form method="POST" action="/login">
+                <form method="POST" action="/login" id="formulario">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="user_email" placeholder="Ingrese su email">
+                        <input type="text" class="form-control" name="email" placeholder="Ingrese su email" data-name="Email">
+                        <p class="form-error"></p>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" name="user_password" placeholder="Contraseña">
+                        <input type="password" class="form-control" name="password" placeholder="Contraseña" data-name="Contraseña">
+                        <p class="form-error"></p>
                     </div>
                     <div class="form-row" id="recordar">
                         <div class="col">
@@ -42,6 +44,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn send-button">Iniciar Sesión</button>
+                    <p class="empty-form form-error"></p>
                 </form>
                 <hr>
                 <a href="" class="btn send-button fb-button">Iniciar Sesión con Facebook</a>
@@ -52,7 +55,9 @@
     </div>
 
     <%- include('../partials/footer') %>
+    
     <script src="/js/login-api/google-login.js"></script>
+    <script src="js/validations/loginValidate.js"></script>
     <script>startApp();</script>
 
 </body>

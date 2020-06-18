@@ -116,3 +116,7 @@ select {
 .messageError p {
     color: white !important;
 }
+
+.invalid {
+    border: 1px solid tomato !important;
+}
