@@ -1,66 +1,66 @@
 const DB = require('../database/models');
 const bcrypt = require('bcrypt');
+const {validationResult } = require('express-validator');
 const {users, GoogleUser} = DB;
+
 
 module.exports = {
     login: (req,res) =>
     {
-
-        let numero = 118.10
-
-console.log(numero)
-
-let nuevoNuv = numero.toLocaleString('es-ar', {
-    minimumFractionDigits: 2
-})
-
-console.log(nuevoNuv)
-
-let segundoNum = numero.toLocaleString( undefined, {minimumFractionDigits: 2})
-
-console.log(segundoNum)
-
-return res.send({nuevoNuv,segundoNum})
-
-
-
-
-
         return res.render('main/login');
     },
 
-    loginPost: (req,res) =>
+    authenticate: (req,res) =>
     {
-        let email = req.body.email;
-        let password = req.body.password;
-        users.findOne({
-            where:{
-                email:email,
-            }
-        })
-        .then(result =>
-            {
-                if(result)
+        let errors = validationResult(req);
+
+        if(!errors.isEmpty())
+        {
+           
+            return res.render('main/login', {
+                errors:errors.mapped(),
+                old: req.body,
+            })
+        }
+        else
+        {
+            let email = req.body.email;
+            let password = req.body.password;
+            users.findOne({
+                where:{
+                    email:email,
+                }
+            })
+            .then(result =>
                 {
-                    if(bcrypt.compareSync(password,result.password))
+                    if(result)
                     {
-                        req.session.user = req.body.user_email;
-                        return res.send("Iniciaste sesión");
+                        if(bcrypt.compareSync(password,result.password))
+                        {
+                            let user = {
+                                email: result.email,
+                                name: result.name,
+                                lastName: result.lastName,
+                            }
+                            req.session.user = user;
+                            return res.redirect('/');
+                        }
+                        else
+                        {
+                            return res.render('main/login', {messageError:"Email y/o contraseña inválido/a."});
+                        }
                     }
                     else
                     {
-                        return res.render('main/login', {messageError:"Usuario y/o contraseña inválido/a."});
+                        return res.render('main/login', {messageError:"Email y/o contraseña inválido/a."});
                     }
-                }
-                else
-                {
-                    return res.render('main/login', {messageError:"Usuario y/o contraseña inválido/a."});
-                }
-            })
-            .catch(error =>
-                {
-                    console.log(error);
                 })
+                .catch(error =>
+                    {
+                        console.log(error);
+                    })
+        }
+
     },
 
     googleLogin: (req,res) =>
@@ -153,50 +153,74 @@ verify().catch(console.error);
     },
     saveUser: (req,res) =>
     { 
-       users.findOne({
-           where:{
-               email:req.body.email,
-           }
-       })
-       .then(result => {
-        if(result)
+        let errors = validationResult(req);
+        
+        if(!errors.isEmpty())
         {
-            return res.render('main/register',{messageError:"Email ya registrado."});
-        }
-        else
-        {
-            if(req.body.password === req.body.passwordRpt)
+      
+            return res.render('main/register',
             {
-                delete req.body.passwordRpt;
-                req.body.password = bcrypt.hashSync(req.body.password,12);
-                users.create(
-                    {
-                        ...req.body
+                errors:errors.mapped(),
+                old: req.body,
+            });
+        }
+        else{
+            if(req.body.password !== req.body.passwordRpt)
+            {
+                return res.render('main/register', 
+                {
+                    errors:{passwordRpt:"La contraseña no coincide."},
+                    old: req.body,
+                })
+            }
+            else{
+                users.findOne({
+                    where:{
+                        email:req.body.email,
                     }
-                )
+                })
                 .then(result => {
-                    user = {
-                        id: result.id,
-                        name: result.name,
-                        email: result.email,
-                    }
-                    req.session.user = user;
-                    return res.json(req.body);
+                 if(result)
+                 {
+                     return res.render('main/register',{messageError:"Email ya registrado."});
+                 }
+                 else
+                 {
+                         delete req.body.passwordRpt;
+                         req.body.password = bcrypt.hashSync(req.body.password,12);
+                         users.create(
+                             {
+                                 ...req.body
+                             }
+                         )
+                         .then(result => {
+                             user = {
+                                 id: result.id,
+                                 name: result.name,
+                                 email: result.email,
+                             }
+                             req.session.user = user;
+                             return res.json(req.body);
+                         })
+                         .catch(error =>
+                             {
+                                 console.log(error);
+                             })
+                 }
                 })
                 .catch(error =>
-                    {
-                        console.log(error);
-                    })
+                 {
+                     console.log(error);
+                 })     
             }
-            else
-            {
-                return res.render('main/register', {error:"La contraseña no coincide."})
-            }
-        }
-       })
-       .catch(error =>
+
+         }
+        },
+
+        logout: (req,res) =>
         {
-            console.log(error);
-        })     
-    }
+            req.session.destroy();
+            return res.redirect('/');
+        }
+
 }

@@ -23,24 +23,24 @@
                 <p id="change-form">¿Tenes usuario en Blairwalf? <a href="#">Iniciá sesión acá</a></p>
                 <form method="POST" action="/registrarse?_method=PUT" id="formulario">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="name" placeholder="Ingrese su nombre" data-name="Nombre">
-                        <p class="form-error"></p>
+                        <input type="text" class="form-control <%= locals.errors && errors.name ? 'invalid' : "" %>" name="name" placeholder="Ingrese su nombre" data-name="Nombre" value=<%= locals.old && old.name ? old.name : "" %>>
+                        <p class="form-error"><%= locals.errors && errors.name ? errors.name.msg : "" %></p>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="lastName" placeholder="Ingrese su apellido" data-name="Apellido">
-                        <p class="form-error"></p>
+                        <input type="text" class="form-control <%= locals.errors && errors.lastName ? 'invalid' : "" %>" name="lastName" placeholder="Ingrese su apellido" data-name="Apellido" value=<%= locals.old && old.lastName ? old.lastName : "" %>>
+                        <p class="form-error"><%= locals.errors && errors.lastname ? errors.lastName.msg : "" %></p>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="email" placeholder="Ingrese su email" data-name="Email">
-                        <p class="form-error"></p>
+                        <input type="text" class="form-control <%= locals.errors && errors.email ? 'invalid' : "" %>" name="email" placeholder="Ingrese su email" data-name="Email" value=<%= locals.old && old.email ? old.email : "" %>>
+                        <p class="form-error"><%= locals.errors && errors.email ? errors.email.msg : "" %></p>
                     </div>
                     <div class="form-group">
-                        <input type="password" id="pass" class="form-control" name="password" placeholder="Contraseña" data-name="Contraseña">
-                        <p class="form-error"></p>
+                        <input type="password" id="pass" class="form-control <%= locals.errors && errors.password ? 'invalid' : "" %>" name="password" placeholder="Contraseña" data-name="Contraseña">
+                        <p class="form-error"><%= locals.errors && errors.password ? errors.password.msg : "" %></p>
                     </div>
                     <div class="form-group">
-                        <input type="password" id="vpass" class="form-control" name="passwordRpt" placeholder="Repetir Contraseña" data-name="Repetir Contraseña">
-                        <p class="form-error"></p>
+                        <input type="password" id="vpass" class="form-control <%= locals.errors && errors.passwordRpt ? 'invalid' : "" %>" name="passwordRpt" placeholder="Repetir Contraseña" data-name="Repetir Contraseña">
+                        <p class="form-error"><%= locals.errors && errors.passwordRpt ? errors.passwordRpt.msg : "" %></p>
                     </div>
                     
                     <button class="btn send-button" type="submit">Registrarse</button>

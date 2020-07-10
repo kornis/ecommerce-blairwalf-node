@@ -7,12 +7,11 @@ var cors = require('cors');
 const session = require('express-session');
 const methodOverride = require('method-override');
 
-const loginMiddleware = require('./middlewares/login');
+const loginMiddleware = require('./middlewares/authenticated');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
-const login = require('./middlewares/login');
 
 
 var app = express();
@@ -34,8 +33,6 @@ app.use(methodOverride('_method'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-
 
 
 

@@ -9,10 +9,11 @@
         </div>
         <div class="col login">
             <div class="login-menu">
-                <% if(typeof userData !== 'undefined' && userData.name){ %>
+                <% if(typeof userData !== 'undefined'){ %>
                     <a href="/perfil"><span>Perfil de <%= userData.name %></span></a>
                     |
                     <a href="/logout"><span>Cerrar sesión</span></a>
+     
                 <% }else{ %>
                 <a href="/registrarse"><span>Crear cuenta</span></a>
                 |
@@ -52,7 +53,7 @@
     <div class="row row-space logo-search">
         <div class="col col-md-3 logo-col">
             <div class="logo item">
-            <a href="/"><img src="/images/nuevo logo.png" alt="" ></a>
+            <a href="/"><img src="/images/bw-logo.png" alt="" ></a>
             </div>
         </div>
 

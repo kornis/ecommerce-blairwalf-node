@@ -1,14 +1,14 @@
 module.exports = (req,res,next) =>
 {
-    console.log(req.session.user);
-    if(req.session.user)
+    if(req.session && req.session.user)
     {
+        console.log("loqueado")
         res.locals.userData = req.session.user;
         next();
     }
     else
-    {
-        console.log("No estás logueado");
+    {   
+        console.log(req.session)
         next();
     }
 }
