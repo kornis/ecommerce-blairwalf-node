@@ -8,10 +8,10 @@ module.exports = {
           allowNull: false,
           autoIncrement: true,
           primaryKey: true,
-          type: Sequelize.INTEGER
+          type: Sequelize.BIGINT
         },
         proveedorId: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.BIGINT,
           onUpdate: 'CASCADE',
           onDelete: 'CASCADE',
           references: {
@@ -23,7 +23,7 @@ module.exports = {
           allowNull: false
         },
         brandId: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.BIGINT,
           onUpdate: 'CASCADE',
           onDelete: 'CASCADE',
           references: {

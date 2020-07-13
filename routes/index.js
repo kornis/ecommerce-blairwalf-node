@@ -4,6 +4,7 @@ var router = express.Router();
 const guest = require('../middlewares/guestMiddleware');
 const validator = require('../middlewares/form_validators');
 const mainController = require('../controllers/mainController');
+const { route } = require('./socialLogin');
 
 
 /* GET home page. */
@@ -14,6 +15,10 @@ router.get('/', function(req, res, next) {
 router.get('/carrito', function(req,res)
 {
   return res.render('main/')
+})
+
+router.get('/perfil', (req,res) => {
+  res.render('users/profile');
 })
 
 

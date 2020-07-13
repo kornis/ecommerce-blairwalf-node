@@ -4,11 +4,6 @@
 <link rel="stylesheet" href='/css/login.css'>
 <title>BW Blairwalf | Iniciar Sesión</title>
 <script src='/js/validations/validator.min.js'></script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="https://apis.google.com/js/api:client.js"></script>
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v7.0&appId=1191796201160725" nonce="4BXqbrvh"></script>
-<meta name="google-signin-client_id" content="412000884387-d5dmn4o4s5unfjma2jc3fb3b7u80tru1.apps.googleusercontent.com">
 </header>
 <body>
 
@@ -48,16 +43,13 @@
                     <p class="empty-form form-error"></p>
                 </form>
                 <hr>
-                <div class="btn send-button fb-button" onclick="checkLoginState();" >Iniciar Sesión con Facebook</div>
-                <div class="btn send-button g-button" id="customBtn">Iniciar Sesión con Google</div>
+                <a href="/auth/fb"><div class="btn send-button fb-button">Iniciar Sesión con Facebook</div></a>
+                <a href="/auth/go"><div class="btn send-button g-button" id="customBtn">Iniciar Sesión con Google</div></a>
             </div>
         </div>
     </div>
 
     <%- include('../partials/footer') %>
-    
-    <script src="/js/login-api/google-login.js"></script>
-    <script src="/js/login-api/facebook-login.js"></script>
     <script src="js/validations/loginValidate.js"></script>
     <script>startApp();</script>
 

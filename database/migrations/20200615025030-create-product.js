@@ -6,7 +6,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       title: {
         type: Sequelize.STRING,
@@ -29,7 +29,7 @@ module.exports = {
         allowNull: false,
       },
       brandId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         references: {
@@ -41,7 +41,7 @@ module.exports = {
         allowNull: false
       },
       categoryId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         references: {
@@ -53,7 +53,7 @@ module.exports = {
         allowNull: false
       },
       proveedorId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         references: {

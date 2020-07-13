@@ -29,5 +29,12 @@
 
   function statusChangeCallback(response)
   {
+    if(response.status === 'unknown')
+    {
+      FB.login(function(response)
+      {
+        console.log("se inició sesión "+response)
+      })
+    }
       console.log(response);
   }

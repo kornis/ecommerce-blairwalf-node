@@ -7,14 +7,14 @@ module.exports = {
           allowNull: false,
           autoIncrement: true,
           primaryKey: true,
-          type: Sequelize.INTEGER
+          type: Sequelize.BIGINT
         },
         quantity: {
           type: Sequelize.INTEGER,
           allowNull: false,
         },
         productId: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.BIGINT,
           onUpdate: 'CASCADE',
           onDelete: 'CASCADE',
           references: {
@@ -26,7 +26,7 @@ module.exports = {
           allowNull: false
         },
         sizeId: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.BIGINT,
           onUpdate: 'CASCADE',
           onDelete: 'CASCADE',
           references: {

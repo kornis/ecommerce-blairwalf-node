@@ -8,14 +8,14 @@ module.exports = {
           allowNull: false,
           autoIncrement: true,
           primaryKey: true,
-          type: Sequelize.INTEGER
+          type: Sequelize.BIGINT
         },
         isFirst: {
           type: Sequelize.BOOLEAN,
           defaultValue: false,
         },
         productId: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.BIGINT,
           onUpdate: 'CASCADE',
           onDelete: 'CASCADE',
           references: {
@@ -29,7 +29,7 @@ module.exports = {
         imageId: {
           onUpdate: 'CASCADE',
           onDelete: 'CASCADE',
-          type: Sequelize.INTEGER,
+          type: Sequelize.BIGINT,
           references: {
             model: {
               tableName: 'images',

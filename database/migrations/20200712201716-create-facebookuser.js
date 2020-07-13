@@ -1,35 +1,56 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('proveedores', {
+    return queryInterface.createTable('facebookusers', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.BIGINT
       },
+      facebookId: {
+        allowNull: false,
+        type: Sequelize.BIGINT
+      },
       name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      phone: {
+      lastName: {
         type: Sequelize.STRING,
+        allowNull: false,
+      },
+      email: {
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false,
+      },
+      emailVerifiedAt: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      password: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      dni: {
+        type: Sequelize.INTEGER(10),
         allowNull: true,
       },
       address: {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      email: {
+      zipCode: {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      whatsapp: {
+      province: {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      deletedAt: {
-        type: Sequelize.DATE,
+      country: {
+        type: Sequelize.STRING,
         allowNull: true,
       },
       createdAt: {
@@ -39,10 +60,14 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      deletedAt: {
+        type: Sequelize.DATE,
+        allowNull: true,
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('proveedores');
+    return queryInterface.dropTable('facebookusers');
   }
 };

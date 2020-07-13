@@ -1,0 +1,41 @@
+<%- include("../partials/header") %>
+
+<title>BW Blairwalf | Perfil de usuario</title>
+</head>
+<body>
+    <%- include('../partials/encabezado') %>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>MI CUENTA</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <img src="" alt="foto perfil">
+            </div>
+            <div class="col">
+                <p><%= userData.name %></p>
+                <a href="#">Mis datos</a>
+                <a href="#">CAMBIAR CONTRASEÑA</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h1>Mis últimas compras</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h5>Orden #3</h5>
+                <p>05/07/2020</p>
+                <p>Pago: Acreditado <span>(Mercado Pago)</span></p>
+                <p>Envío: Pendiente <span>(Acordar envío)</span></p>
+                <a href="#">VER DETALLE DE LA COMPRA</a>
+            </div>
+        </div>
+    </div>
+    <%- include('../partials/footer') %>
+</body>
+</html>

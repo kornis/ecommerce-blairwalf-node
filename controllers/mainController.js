@@ -42,7 +42,7 @@ module.exports = {
                                 name: result.name,
                                 lastName: result.lastName,
                             }
-                            req.session.user = user;
+                            req.session.user_data = user;
                             return res.redirect('/');
                         }
                         else
@@ -89,7 +89,7 @@ module.exports = {
                             name: result.name,
                             email: result.email,
                         }
-                        req.session.user = user;
+                        req.session.user_data = user;
                         return res.status(200).json(
                             {
                                 response:"OK",
@@ -109,7 +109,7 @@ module.exports = {
                             {
                                 if(result)
                                 {
-                                    req.session.user = user;
+                                    req.session.user_data = user;
                                     console.log(result);
                                     return res.status(200).json(
                                         {
@@ -199,7 +199,7 @@ verify().catch(console.error);
                                  name: result.name,
                                  email: result.email,
                              }
-                             req.session.user = user;
+                             req.session.user_data = user;
                              return res.json(req.body);
                          })
                          .catch(error =>

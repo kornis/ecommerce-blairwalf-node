@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const GoogleUser = sequelize.define('GoogleUser', {
-    googleId: {
+  const facebookuser = sequelize.define('facebookuser', {
+    facebookId: {
       type: DataTypes.BIGINT,
       allowNull: false,
     },
@@ -46,8 +46,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true, 
     } 
   }, {});
-  GoogleUser.associate = function(models) {
+  facebookuser.associate = function(models) {
     // associations can be defined here
   };
-  return GoogleUser;
+  return facebookuser;
 };

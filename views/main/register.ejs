@@ -1,9 +1,6 @@
 <%- include("../partials/header") %>
 <link rel="stylesheet" href='/css/login.css'>
 <script src='/js/validations/validator.min.js'></script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="https://apis.google.com/js/api:client.js"></script>
-<meta name="google-signin-client_id" content="412000884387-d5dmn4o4s5unfjma2jc3fb3b7u80tru1.apps.googleusercontent.com">
 <title>BW Blairwalf | Registro de usuario</title>
 </head>
 <body>
@@ -47,14 +44,13 @@
                     <p class="empty-form form-error"></p>
                 </form>
                 <hr>
-                <a href="" class="btn send-button fb-button">Iniciar Sesión con Facebook</a>
-                <div class="btn send-button g-button" id="customBtn">Iniciar Sesión con Google</div>
+                <a href="/auth/fb"><div class="btn send-button fb-button">Iniciar Sesión con Facebook</div></a>
+                <a href="/auth/go"><div class="btn send-button g-button" id="customBtn">Iniciar Sesión con Google</div></a>
             </div>
         </div>
     </div>
 
     <%- include("../partials/footer") %>
-    <script src="/js/login-api/google-login.js"></script>
     <script src="/js/validations/registerValidate.js"></script>
     <script>startApp();</script>
 </body>
