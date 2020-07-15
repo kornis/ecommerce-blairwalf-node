@@ -3,14 +3,11 @@ const router = express.Router();
 const querystring = require('querystring');
 const request = require('request');
 
-const { fbAppToken } = require('../utils/appCredentials');
 const { registerFacebookUser, registerGoogleUser } = require('../helpers/userHelper');
 const generateRandomString = require("../utils/generateRandomString");
-const encodeBasic = require('../utils/encodeBasics');
 const {facebookScopesArray, googleScopesArray} = require('../utils/scopes');
 const { config } = require('../config');
-const { query } = require("express");
-const { normalize } = require("path");
+
 
 
 router.get('/fb', (req,res) =>
@@ -72,26 +69,6 @@ router.get('/fb/callback', (req,res, next) => {
             req.session.social_user = body;
             registerFacebookUser(req,res);
          })
- 
-         //probando datos
-         /*fbAppToken(config.facebookClientId,config.facebookClientPass)
-         .then(response =>
-            {
-                let query = querystring.stringify({
-                    input_token: body.access_token,
-                    access_token:response
-                 })
-                 request.get(`https://graph.facebook.com/debug_token?${query}`, function(error, response, body)
-                 {
-                     return res.send(body);
-                 });
-            })
-            .catch(error => console.log(error));*/
-
-            
-         
-         
-         //return res.redirect('/perfil');
      });
 });
 
@@ -118,14 +95,6 @@ router.get("/go", (req,res)=>{
      }
 
      res.clearCookie("g_auth_state");
-
-
-
-
-    /* request.get("https://accounts.google.com/.well-known/openid-configuration", function(error, response, body)
-     {
-         return res.send(response);
-     })*/
 
      let dataBody = {
          url: "https://oauth2.googleapis.com/token",

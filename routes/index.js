@@ -4,7 +4,7 @@ var router = express.Router();
 const guest = require('../middlewares/guestMiddleware');
 const validator = require('../middlewares/form_validators');
 const mainController = require('../controllers/mainController');
-const { route } = require('./socialLogin');
+
 
 
 /* GET home page. */
@@ -22,21 +22,12 @@ router.get('/perfil', (req,res) => {
 })
 
 
-
-
 /* LOGIN and REGISTER */
 
 router.get('/login',guest,mainController.login);
 router.post('/login',guest, mainController.authenticate);
 router.get('/registrarse',guest, mainController.createUser);
 router.put('/registrarse',guest, validator.check_register, mainController.saveUser);
-router.post('/login-with-google',guest,cors(),mainController.googleLogin);
-
 router.get('/logout', mainController.logout);
-
-
-
-
-
 
 module.exports = router;

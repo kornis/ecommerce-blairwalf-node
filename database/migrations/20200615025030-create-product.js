@@ -52,13 +52,14 @@ module.exports = {
         },
         allowNull: false
       },
-      proveedorId: {
-        type: Sequelize.BIGINT,
+      providerId: {
+        type: Sequelize.BIGINT
+        ,
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
         references: {
           model: {
-            tableName: 'proveedores',
+            tableName: 'providers',
           },
           key: 'id'
         },
