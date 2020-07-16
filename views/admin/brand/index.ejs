@@ -1,0 +1,56 @@
+<%- include("../partials/html_header") %>
+
+<link rel="stylesheet" href='/css/admin-styles.css'>
+<link rel="stylesheet" href='/css/admin-side-column.css'>
+<title>BW Blairwalf | ABM Marcas </title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+<%- include("../partials/side-column") %>
+
+        <div class="col">
+            <p class="centrar">Administración de marcas</p>
+            @if(session('message'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{session('message')}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div> 
+            @endif
+            @if(session('message-error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{session('message-error')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            @endif
+            <a href="/admin/crear-marca" class="btn send-button mb-3" >Crear nueva marca</a>    
+            @foreach ($marcas as $marca)
+            <div class="product-detail-content mb-2">
+                <div class="flex justify-content-between adm-title-data">
+                    <a href="#">{{$marca->brand_name}}</a>
+                    <span>
+                        <a href="/admin/modificar-marca/{{$marca->brand_id}}">Modificar</a>
+                    <a href="/admin/borrar-marca/{{$marca->brand_id}}">Eliminar</a>
+                    </span>
+                </div>
+                <div class="abm-description-col">
+                    <p class="push-right p-nomargin"><small>20-02-2020 12:39hs</small></p>
+                </div>
+            </div> 
+            @endforeach
+
+            </div>
+        </div>
+        </div>
+        
+<%- include("../partials/footer") %>
+
+        <script src='/js/alerts.js'></script>
+
+        </body>
+        </html>
+   

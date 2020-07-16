@@ -1,0 +1,76 @@
+<%- include("../partials/html_header") %>
+<link rel="stylesheet" href='/css/tarjeta-producto.css'>
+<title>BW Blairwalf | Detalle de producto</title>
+</head>
+<body>
+<%- include("../partials/header") %>
+
+<div class="container">
+        
+    <div class="row-fluid mb-5">
+        <div class="col section-title align-self-center">
+            <h5>Detalle de la Prenda</h5>
+        </div>
+    </div>
+
+    <div class="row"><div class="col centrar"><p>Nombre de la prenda</p></div></div>
+    <div class="row mb-5">
+        <div class="col tarjeta tarjeta-slider " >
+            <div class="tarjeta-item show-tarjeta fade2">
+                <img src="IMG-20200428-WA0105.jpg" alt="">
+            </div>
+
+            <div class="tarjeta-item hide-tarjeta fade2">
+                <img src="IMG-20200428-WA0106.jpg" alt="">
+            </div>
+
+            <div class="tarjeta-item hide-tarjeta fade2">
+                <img src="IMG-20200428-WA0108.jpg" alt="">
+            </div>
+        </div>
+        <div class="container">
+        <div class="row">
+            <div class="col tarjeta-boton-slider centrar">
+                <i class="fas fa-circle boton-slider" ></i>
+                <i class="far fa-circle boton-slider" ></i>
+                <i class="far fa-circle boton-slider" ></i>
+            </div>
+        </div>
+    </div>
+    </div>
+<form action="" method="post">
+    <div class="row">
+        <div class="col-sm-12 flex">
+            <label>Talles:</label> 
+            <span class="item-talle" data-value="90" onclick="select_talle(0)">90</span>
+            <span class="item-talle" data-value="95" onclick="select_talle(1)">95</span>
+            <span class="item-talle" data-value="100" onclick="select_talle(2)">100</span>
+            <span class="item-talle" data-value="105" onclick="select_talle(3)">105</span>
+        </div>
+        <div class="col-sm-12 flex">
+            <div class="icon-select">
+                <i class="fas fa-sort-down"></i>
+            <select name="color" id="color">
+                <option disabled selected="true" value="#">Seleccionar color</option>
+                <option value="rojo">Rojo</option>
+                <option value="rojo">Negro</option>
+                <option value="rojo">Azul</option>
+            </select>
+            </div>
+        </div>
+        <div class="col-sm-12 flex">
+            <a href="#" class="btn add-cart-btn">Agregar al carrito</a>
+        </div>
+    </div>
+</form>
+    <div class="row">
+        <div class="col">
+            <p><strong>Descripción: </strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo aperiam repellat et eaque molestias debitis perspiciatis earum quae atque porro velit eveniet dolorum, excepturi veniam fuga alias! In, ducimus! A.</p>
+            <p><strong>Tabla de talles: </strong> en el siguiente <a href="#">link</a></p>
+        </div>
+    </div>
+</div>
+<%- include("../partials/footer") %>   
+<script src="/js/tarjeta-slider.js"></script>
+<script src="/js/select.js"></script>
+

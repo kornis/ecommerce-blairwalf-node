@@ -1,0 +1,48 @@
+<%- include('../../partials/html_header') %>
+
+  <link rel="stylesheet" href='/css/admin-side-column.css'>
+  <link rel="stylesheet" href='/css/footer.css'>
+  <title>BW Blairwalf | Registar categoría</title>
+</head>
+<body>
+  <%- include("../../partials/header") %>
+    <div class="container-fluid">
+      <div class="row">
+        <%- include('../../partials/side-column') %>
+
+        <div class="col-sm-8 col-md-9">
+            <p class="centrar">CREAR CATEGORÍA</p>
+              <% if(typeof message !== 'undefined'){ %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <%= message %>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              <% } %>
+            <% if(typeof message_error !== 'undefined') { %>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <%= message_error %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <% } %>
+
+            <form action="/admin/categoria<%= urlForm %>" method="<%= method %>" class="form">
+              <div class="form-group">
+                <label for="name">Título</label>
+                <input type="text" name="name" id="name" class="form-control" data-name="título">
+                <p class="required"></p>
+              </div>
+              <div class="flex"><button class="btn send-button">Crear categoría</button></div>
+            </form>
+          </div>
+        </div>
+    </div> 
+<%- include('../../partials/footer') %>
+
+
+<script src="/js/alerts.js"></script>
+</body>
+</html>

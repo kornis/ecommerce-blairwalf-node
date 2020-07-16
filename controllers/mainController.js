@@ -6,21 +6,18 @@ module.exports = {
     login: (req, res) => {
         return res.render('main/login');
     },
-
     authenticate: (req, res) => {
         let errors = validationResult(req);
-
         if (!errors.isEmpty()) {
-
             return res.render('main/login', {
                 errors: errors.mapped(),
                 old: req.body
-            })
-        } else {
+            });
+        } 
+        else {
             let email = req.body.email;
             let password = req.body.password;
-            users
-                .findOne({
+            users.findOne({
                     where: {
                         email: email
                     }
@@ -35,7 +32,8 @@ module.exports = {
                             }
                             req.session.user_data = user;
                             return res.redirect('/');
-                        } else {
+                        } 
+                        else {
                             return res.render(
                                 'main/login', {
                                     messageError: "Email y/o contraseña inválido/a."
@@ -91,8 +89,7 @@ module.exports = {
                         } else {
                             delete req.body.passwordRpt;
                             req.body.password = bcrypt.hashSync(req.body.password, 12);
-                            users
-                                .create({
+                            users.create({
                                     ...req.body
                                 })
                                 .then(result => {
@@ -102,7 +99,7 @@ module.exports = {
                                         email: result.email
                                     }
                                     req.session.user_data = user;
-                                    return res.json(req.body);
+                                    return res.redirect('/perfil');
                                 })
                                 .catch(error => {
                                     console.log(error);
@@ -113,15 +110,11 @@ module.exports = {
                         console.log(error);
                     })
             }
-
         }
     },
 
     logout: (req, res) => {
-        req
-            .session
-            .destroy();
+        req.session.destroy();
         return res.redirect('/');
     }
-
 }
