@@ -120,3 +120,7 @@ select {
 .invalid {
     border: 1px solid tomato !important;
 }
+
+.link-to-back {
+    display: block;
+}

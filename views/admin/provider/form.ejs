@@ -1,41 +1,40 @@
-<%- include('../partials/html_header') %>
+<%- include('../../partials/html_header') %>
 <link rel="stylesheet" href='/css/admin-side-column.css'>
 <link rel="stylesheet" href='/css/footer.css'>
-<title>BW Blairwalf | Registrar proveedor</title>
+<title>BW Blairwalf | <%= title %></title>
 </head>
 <body>
   <div class="container-fluid">
     <div class="row">
-      <%- include('../partials/side-column') %>
+      <%- include('../../partials/side-column') %>
 
         <div class="col-sm-8 col-md-9">
-            <p class="centrar">CREAR PROVEEDOR</p>
+            <p class="centrar"><%= title.toUppercase() %></p>
 
-            @if(session('message'))
+            <% if(typeof message !== 'undefined'){ %>>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{session('message')}}
+                    <%= message %>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-            @endif
-            @if(session('message-error'))
+                <% } %>
+            <% if(typeof message_error !== 'undefined'){ %>>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{session('message-error')}}
+                <%= message_error %>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-            @endif
+            <% } %>
 
-            <form action="/admin/crear-proveedor" method="post" class="form">
-                @csrf
+            <form action="/admin/proveedor/<%= provider.id %><%= urlForm %>" method="post" class="form">
                 <div class="form-group">
-                    <label for="proveedor_name">Título</label>
-                    <input type="text" name="proveedor_name" id="proveedor_name" class="form-control" data-name="título">
+                    <label for="name">Título</label>
+                    <input type="text" name="name" id="name" class="form-control" data-name="título">
                     <p class="required"></p>
                 </div>
-                <div class="flex"><button type="submit" class="btn send-button">Crear proveedor</button></div>
+                <div class="flex"><button class="btn send-button">Enviar</button></div>
             </form>
         </div>
 

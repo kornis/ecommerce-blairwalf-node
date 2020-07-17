@@ -1,42 +1,43 @@
-<%- include('../partials/html_header') %>
+<%- include('../../partials/html_header') %>
 <link rel="stylesheet" href='/css/admin-side-column.css'>
 <link rel="stylesheet" href='/css/footer.css'>
-<title>BW Blairwalf | Registrar marca</title>
+<title>BW Blairwalf | <%= title %></title>
 </head>
 <body>
+  <%- include('../../partials/header') %>
   <div class="container-fluid">
     <div class="row">
 
-<%- include('../partials/side-column') %>
+<%- include('../../partials/side-column') %>
 
         <div class="col-sm-8 col-md-9">
-            <p class="centrar">CREAR MARCA</p>
+            <p class="centrar"><%= title.toUpperCase() %></p>
 
-            @if(session('message'))
+            <% if(typeof message !== 'undefined'){ %>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{session('message')}}
+                    <%= message %>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-            @endif
-            @if(session('message-error'))
+                <% } %>
+            <% if(typeof message_error !== 'undefined'){ %>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{session('message-error')}}
+                <%= message_error %>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-            @endif
+            <% } %>
 
-            <form action="/admin/crear-marca" method="post" class="form">
-                @csrf
+            <form action="/admin/marca/<%= brand.id %><%= urlForm %>" method="POST" class="form">
                 <div class="form-group">
-                    <label for="brand_name">Título</label>
-                    <input type="text" name="brand_name" id="brand_name" class="form-control" data-name="título">
+                    <label for="name">Título</label>
+                    <input type="text" name="name" id="name" class="form-control" data-name="título" value="<%= brand.name %>">
                     <p class="required"></p>
                 </div>
-                <div class="flex"><button type="submit" class="btn send-button">Crear marca</button></div>
+                <div class="flex"><button type="submit" class="btn send-button">Enviar</button></div>
+                <a href="/admin/marcas" class="btn centrar link-to-back">Volver</a>
             </form>
         </div>
 
@@ -45,7 +46,7 @@
     
     
    
-<%- include('../partials/footer') %>
+<%- include('../../partials/footer') %>
 
 
 <script src="/js/alerts.js"></script>

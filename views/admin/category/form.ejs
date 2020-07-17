@@ -29,13 +29,14 @@
               </div>
             <% } %>
 
-            <form action="/admin/categoria<%= urlForm %>" method="<%= method %>" class="form">
+            <form action="/admin/categoria<%= urlForm %>" method="POST" class="form">
               <div class="form-group">
                 <label for="name">Título</label>
-                <input type="text" name="name" id="name" class="form-control" data-name="título">
+                <input type="text" name="name" id="name" class="form-control" data-name="título" value="<% category.name %>">
                 <p class="required"></p>
               </div>
               <div class="flex"><button class="btn send-button">Crear categoría</button></div>
+              <a href="/admin/categorias" class="btn centrar link-to-back">Volver</a>
             </form>
           </div>
         </div>
