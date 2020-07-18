@@ -1,52 +1,57 @@
-<%- include('../partials/html_header') %>
+<%- include('../../partials/html_header') %>
 <link rel="stylesheet" href='/css/admin-side-column.css'>
 <link rel="stylesheet" href='/css/footer.css'>
-<title>BW Blairwalf | Registrar talle</title>
+<title>BW Blairwalf | <%= title %></title>
 </head>
+
 <body>
+  <%- include('../../partials/header') %>
+  
   <div class="container-fluid">
     <div class="row">
-       <%- include('../partials/side-column') %>
-
-        <div class="col-sm-8 col-md-9">
-            <p class="centrar">CREAR TALLE</p>
-
-            @if(session('message'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{session('message')}}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-            @endif
-            @if(session('message-error'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{session('message-error')}}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-            @endif
-
-            <form action="/admin/crear-talle" method="post" class="form">
-                @csrf
-                <div class="form-group">
-                    <label for="size_name">Nombre</label>
-                    <input type="text" name="size_name" id="size_name" class="form-control" data-name="nombre">
-                    <p class="required"></p>
-                </div>
-                <div class="flex"><button type="submit" class="btn send-button">Crear talle</button></div>
-            </form>
+      
+      <%- include('../../partials/side-column') %>
+      
+      <div class="col-sm-8 col-md-9">
+        <p class="centrar"><%= title.toUpperCase() %></p>
+        
+        <% if(typeof message !== 'undefined'){ %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= message %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <% } %>
 
+        <% if(typeof message_error !== 'undefined'){ %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= message_error %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <% } %>
+
+        <form action="/admin/talle/<%= size.id %><%= urlForm %>" method="POST" class="form">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" name="name" id="name" class="form-control" data-name="nombre" value='<%= size.name %>'>
+            <p class="required"></p>
+          </div>
+          <div class="flex"><button type="submit" class="btn send-button">Enviar</button></div>
+        </form>
       </div>
+
+    </div>
   </div>
-    
-    
-   
-<%- include('../partials/footer') %>
 
 
-<script src="/js/alerts.js"></script>
+
+  <%- include('../../partials/footer') %>
+
+
+  <script src="/js/alerts.js"></script>
 </body>
+
 </html>

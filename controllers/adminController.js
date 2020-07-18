@@ -1,7 +1,7 @@
 const db = require('../database/models');
 
 module.exports = {
-    //categories
+    //category crud
     indexCategory: (req, res) => {
         db.category.findAll()
             .then(result => {
@@ -109,7 +109,7 @@ module.exports = {
             })
     },
 
-    //brands
+    //brand crud
     indexBrand: (req, res) => {
         db.brand.findAll()
             .then(result => {
@@ -209,7 +209,7 @@ module.exports = {
     },
 
 
-
+    //provicer crud
     indexProvider: (req, res) => {
         db.provider.findAll()
             .then(result => {
@@ -227,21 +227,22 @@ module.exports = {
                 return res.redirect('/admin/dashboard?err=Error inesperado');
             })
     },
-    createProvider: (req, res) => {
+    createProvider: (req, res) => { 
         //using the same form to edit and create provider.
         //specific urlForm to distinguish views
         return res.render('admin/provider/form', {
             urlForm: '',
             message: req.query.ok,
             message_error: req.query.err,
-            provider: {}
+            provider: {},
+            title: 'Crear proveedor'
         });
     },
     storeProvider: (req, res) => {
         db.provider.create(req.body)
             .then(result => {
                 if (result) {
-                    return res.redirect('/admin/providers?ok=Proveedor creado con éxito.');
+                    return res.redirect('/admin/proveedores?ok=Proveedor creado con éxito.');
                 }
                 else {
                     return res.redirect('/admin/proveedor?err=Error inesperado');
@@ -308,22 +309,219 @@ module.exports = {
             });
     },
 
-
-
-
-
-    createSizes: (req, res) => {
-        res.render('admin/create_size');
+    //Size crud
+    indexSize: (req, res) => {
+        db.size.findAll()
+            .then(result => {
+                if (result) {
+                    return res.render('admin/size/index', {
+                        sizes: result,
+                    });
+                }
+                else {
+                    return res.render('admin/size/index');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                return res.redirect('/admin/dashboard?err=Error inesperado');
+            })
+    },
+    createSize: (req, res) => {
+        //using the same form to edit and create Size.
+        //specific urlForm to distinguish views
+        return res.render('admin/size/form', {
+            urlForm: '',
+            message: req.query.ok,
+            message_error: req.query.err,
+            size: {},
+            title: 'Crear talle'
+        });
+    },
+    storeSize: (req, res) => {
+        db.size.create(req.body)
+            .then(result => {
+                if (result) {
+                    return res.redirect('/admin/talles?ok=Talle creado con éxito.');
+                }
+                else {
+                    return res.redirect('/admin/talles?err=Error inesperado');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                if (error.name === 'SequelizeUniqueConstraintError') {
+                    return res.redirect('/admin/talle?err=Talle ya existente.');
+                }
+                return res.redirect('/admin/talles?err=Error inesperado.');
+            })
+    },
+    editSize: (req, res) => {
+        //using the same form to edit and create Size.
+        //specific urlForm to distinguish views
+        db.size.findByPk(req.params.id)
+            .then(result => {
+                if (result) {
+                    return res.render('admin/size/form', {
+                        urlForm: '?_method=PUT',
+                        title: 'Modificar talle',
+                        message: req.query.ok,
+                        message_error: req.query.err,
+                        size: result,
+                        title: 'Editar talle'
+                    });
+                }
+                else {
+                    return res.redirect('/admin/talles?err=Talle no encontrado');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                return res.redirect('/admin/talles?err=Error inesperado');
+            })
+    },
+    updateSize: (req, res) => {
+        const id = req.params.id;
+        db.size.update(req.body, { where: { id: id } })
+            .then(result => {
+                if (result) {
+                    return res.redirect('/admin/sizes?ok=Talle modificado con éxito.');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                //validate if entry exists
+                if (error.name === 'SequelizeUniqueConstraintError') {
+                    return res.redirect(`/admin/talle/${id}?err=El talle ya existe.`);
+                }
+                return res.redirect('/admin/talles?err=Error inesperado');
+            })
+    },
+    deleteSize: (req, res) => {
+        db.size.destroy({ where: { id: req.params.id } })
+            .then(result => {
+                if (result) {
+                    return res.redirect('/admin/talles?ok=Talle eliminado con éxito.');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                return res.redirect('/admin/talles?err=Error inesperado.');
+            });
     },
 
-    editSizes: (req, res) => {
-        res.render('admin/edit_size');
+    //Product crud
+    indexProduct: (req, res) => {
+        db.product.findAll()
+            .then(result => {
+                if (result) {
+                    return res.render('admin/product/index', {
+                        products: result,
+                    });
+                }
+                else {
+                    return res.render('admin/product/index');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                return res.redirect('/admin/dashboard?err=Error inesperado');
+            })
     },
-    createProducts: (req, res) => {
-        res.render('admin/create_product');
+    createProduct: (req, res) => {
+        Promise.all([
+            db.category.findAll(),
+            db.provider.findAll(),
+            db.brand.findAll(),
+            db.size.findAll()
+        ])
+        .then(([categories,providers,brands,sizes]) => {
+            //using the same form to edit and create Product.
+            //specific urlForm to distinguish views
+            return res.render('admin/product/form', {
+                urlForm: '',
+                message: req.query.ok,
+                message_error: req.query.err,
+                product: {},
+                categories,
+                providers,
+                brands,
+                sizes,
+                title: 'Crear Producto'
+            });
+        })
     },
+    storeProduct: (req, res) => {
+        const { provider, brand, size, category } = req.body;
 
-    editProducts: (req, res) => {
-        res.render('admin/edit_product');
+        db.product.create(...req.body)
+            .then(result => {
+                if (result) {
+                    return res.redirect('/admin/productos?ok=Producto creado con éxito.');
+                }
+                else {
+                    return res.redirect('/admin/productos?err=Error inesperado');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                if (error.name === 'SequelizeUniqueConstraintError') {
+                    return res.redirect('/admin/producto?err=Producto ya existente.');
+                }
+                return res.redirect('/admin/productos?err=Error inesperado.');
+            })
+    },
+    editProduct: (req, res) => {
+        //using the same form to edit and create Product.
+        //specific urlForm to distinguish views
+        db.product.findByPk(req.params.id)
+            .then(result => {
+                if (result) {
+                    return res.render('admin/product/form', {
+                        urlForm: '?_method=PUT',
+                        title: 'Modificar producto',
+                        message: req.query.ok,
+                        message_error: req.query.err,
+                        product: result,
+                        title: 'Editar producto'
+                    });
+                }
+                else {
+                    return res.redirect('/admin/productos?err=Producto no encontrado');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                return res.redirect('/admin/productos?err=Error inesperado');
+            })
+    },
+    updateProduct: (req, res) => {
+        const id = req.params.id;
+        db.product.update(req.body, { where: { id: id } })
+            .then(result => {
+                if (result) {
+                    return res.redirect('/admin/productos?ok=Producto modificado con éxito.');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                //validate if entry exists
+                if (error.name === 'SequelizeUniqueConstraintError') {
+                    return res.redirect(`/admin/producto/${id}?err=El producto ya existe.`);
+                }
+                return res.redirect('/admin/productos?err=Error inesperado');
+            })
+    },
+    deleteProduct: (req, res) => {
+        db.product.destroy({ where: { id: req.params.id } })
+            .then(result => {
+                if (result) {
+                    return res.redirect('/admin/productos?ok=Producto eliminado con éxito.');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                return res.redirect('/admin/productos?err=Error inesperado.');
+            });
     },
 }

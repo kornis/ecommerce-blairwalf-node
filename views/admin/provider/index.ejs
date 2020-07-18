@@ -31,7 +31,7 @@
                     </button>
                 </div>
                 <% } %>
-                <a href="/admin/crear-proveedor" class="btn send-button mb-3">Crear nuevo Proveedor</a>
+                <a href="/admin/proveedor" class="btn send-button mb-3">Crear nuevo Proveedor</a>
                 <% if(typeof providers === 'undefined'){ %>
                 <h3>NO HAY PROVEEDORES PARA MOSTRAR</h3>
                 <% }else{ %>
@@ -40,14 +40,14 @@
                     <div class="flex justify-content-between adm-title-data">
                         <span><%= provider.name %></span>
                         <span>
-                            <a href="/admin/modificar-proveedor/<%= provider.id %>">Modificar</a>
-                            <form action="/admin/provider/<%= provider.id %>?_method=DELETE" method="POST">
+                            <a href="/admin/proveedor/<%= provider.id %>">Modificar</a>
+                            <form action="/admin/proveedor/<%= provider.id %>?_method=DELETE" method="POST">
                                 <button>Eliminar</button>
                             </form>
                         </span>
                     </div>
                     <div class="abm-description-col">
-                        <p class="push-right p-nomargin"><small>20-02-2020 12:39hs</small></p>
+                        <p class="push-right p-nomargin"><small><%= provider.updatedAt %></small></p>
                     </div>
                 </div>
                 <% }} %>

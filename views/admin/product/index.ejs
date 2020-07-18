@@ -1,49 +1,57 @@
-<%- include('../partials/html_header') %>
+<%- include('../../partials/html_header') %>
 
 <link rel="stylesheet" href='/css/admin-styles.css'>
 <link rel="stylesheet" href='/css/admin-side-column.css'>
 <title>BW Blairwalf | ABM Producto </title>
 </head>
+
 <body>
+    <%- include('../../partials/header') %>
     <div class="container-fluid">
         <div class="row">
-<%- include('../partials/side-column') %>
+            <%- include('../../partials/side-column') %>
 
 
-        <div class="col">
-            <p class="centrar">Administración de productos</p>
-            <a href="/admin/crear-producto" class="btn send-button mb-3" >Crear nuevo producto</a>    
-            {{ csrf_field() }}
-            @foreach ($productos as $item)                
-            <div class="product-detail-content mb-2">
-                <div class="flex justify-content-between adm-title-data">
-                <a href="#">{{$item->product_title}}</a>
-                    <span>
-                        <a href="/admin/modificar-producto/{{$item->product_id}}">Modificar</a>
-                        <span class="delete_item" data-name="{{$item->product_id}}">Eliminar</span>
-                    </span>
-                </div>
-                <div class="row">
-                    <div class="col-sm-2 abm-mini-image">
-                    <img src="{{asset($item->image[0]->image_path)}}" alt="" style="height: 70px;">
+            <div class="col">
+                <p class="centrar">Administración de productos</p>
+                <a href="/admin/producto" class="btn send-button mb-3">Crear nuevo producto</a>
+                <% if(typeof products === 'undefined') { %>
+                <h3>NO HAY PRODUCTOS PARA MOSTRAR</h3>
+                <% } else{ %>
+                <% for(const product of products) { %>
+                <div class="product-detail-content mb-2">
+                    <div class="flex justify-content-between adm-title-data">
+                        <a href="#"><%= product.title %></a>
+                        <span>
+                            <a href="/admin/product/<%= product.id %>">Modificar</a>
+                            <form action="/admin/product/<%= product.id %>?_method=DELETE" method="POST">
+                                <!-- <span class="delete_item" data-name="{{$item->product_id}}">Eliminar</span> -->
+                                <button>Eliminar</button>
+                            </form>
+                        </span>
                     </div>
-                    <div class="col-sm-10 abm-description-col">
-                    <p class="abm-description">Descripción: {{$item->product_description}}</p>
-                    <p class="push-right p-nomargin"><small>{{$item->updated_at}}</small></p>
+                    <div class="row">
+                        <div class="col-sm-2 abm-mini-image">
+                            <img src="{{asset($item->image[0]->image_path)}}" alt="IMAGEN PRODUCTO" style="height: 70px;">
+                        </div>
+                        <div class="col-sm-10 abm-description-col">
+                            <p class="abm-description">Descripción: <%= product.description %>></p>
+                            <p class="push-right p-nomargin"><small><%= product.updatedAt %>></small></p>
+                        </div>
                     </div>
                 </div>
+            <% }} %>
+
+
             </div>
-            @endforeach
-
-           
-        </div>
         </div>
     </div>
-    
 
-<%- include("../partials/footer") %>
+
+    <%- include("../../partials/footer") %>
 
 
     <script src="/js/api/admin_product.js"></script>
-    </body>
-    </html>
+</body>
+
+</html>

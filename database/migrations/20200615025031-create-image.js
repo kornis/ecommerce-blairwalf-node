@@ -16,6 +16,18 @@ module.exports = {
         allowNull: true,
         type: Sequelize.DATE,
       },
+      productId: {
+        type: Sequelize.BIGINT,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        references: {
+          model: {
+            tableName: 'products'
+          },
+          key: 'id'
+        },
+        allowNull: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
